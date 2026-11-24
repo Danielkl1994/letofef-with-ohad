@@ -20,7 +20,7 @@
 <style>
 :root{
   --bg:#FDFBF7; --surface:#FFFFFF; --ink:#212529; --muted:#5B5F66; --line:#EEDFCF; --soft:#FCEBDD;
-  --hero-top:#FFF0E4; --header-bg:rgba(253,251,247,.9);
+  --hero-top:#FFF0E4; --header-bg:rgba(253,251,247,.98);
   --orange:#D9531E; --orange-btn:#C9480F; --orange-text:#B8400D; --orange-panel:#C2440F;
   --green:#0B7A4B; --night:#1A1A1A; --focus:#C2440F;
   --font:'Heebo','Arial Hebrew',Arial,sans-serif;
@@ -302,6 +302,32 @@ body.lb-lock{overflow:hidden}
 .a11y-body a{color:#FFB347;text-decoration:underline}
 .a11y-date{color:rgba(255,255,255,.7);font-size:.85rem}
 .foot-links a,.credit a{min-height:24px}
+
+#a11yw{--aw-accent:#C9480F;--aw-accent-ink:#ffffff;font-family:inherit}
+.aw-open{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:62;width:48px;height:52px;border:0;border-radius:0 14px 14px 0;background:var(--aw-accent);color:var(--aw-accent-ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.aw-panel{position:fixed;left:12px;top:50%;transform:translateY(-50%);z-index:63;width:min(330px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:#fff;color:#14152b;border-radius:18px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.55);direction:rtl}
+.aw-panel[hidden]{display:none}
+.aw-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.aw-head h2{font-weight:800;font-size:19px;color:#14152b;outline:0;margin:0}
+.aw-x{border:0;background:none;font-size:20px;width:44px;height:44px;border-radius:10px;cursor:pointer;color:#14152b}
+.aw-zoom{display:flex;align-items:center;justify-content:space-between;background:#f0f2f8;border-radius:12px;padding:6px;margin-bottom:12px}
+.aw-zoom button{width:48px;height:44px;border:0;border-radius:10px;background:#fff;font-size:20px;font-weight:800;color:#14152b;cursor:pointer}.aw-zoom span{font-weight:800}
+.aw-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.aw-t{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border:1.5px solid #d9dcea;border-radius:12px;background:#fff;color:var(--aw-accent);font-family:inherit;font-weight:700;font-size:15px;line-height:1.2;cursor:pointer}
+.aw-t span{color:#14152b}.aw-t[aria-pressed="true"]{background:var(--aw-accent);border-color:var(--aw-accent);color:var(--aw-accent-ink)}.aw-t[aria-pressed="true"] span{color:var(--aw-accent-ink)}
+.aw-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:15px;font-weight:700}
+.aw-foot button{border:0;background:none;color:var(--aw-accent);font:inherit;cursor:pointer;padding:10px}.aw-foot a{color:var(--aw-accent);text-decoration:underline;padding:10px}
+#a11yw button:focus-visible,#a11yw a:focus-visible{outline:3px solid #ff9f1a;outline-offset:2px}
+html.a-hc{filter:contrast(1.35)}html.a-gs{filter:grayscale(1)}html.a-hc.a-gs{filter:grayscale(1) contrast(1.35)}
+html.a-ln a:not(#a11yw a){text-decoration:underline!important;text-underline-offset:3px;outline:2px solid #ffd21f;outline-offset:2px}
+html.a-rf body *:not(#a11yw *){font-family:Arial,sans-serif!important;letter-spacing:.01em}
+html.a-sa *,html.a-sa *::before,html.a-sa *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.a-bc,html.a-bc *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24'%3E%3Cpath d='M4 2l16 8-7 2.2L10 20z' fill='%23000' stroke='%23fff' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2,auto!important}
+@media print{#a11yw{display:none}}
+#accessibility,#privacy{scroll-margin-top:96px}
+.form-privacy{margin:12px 0 0;font-size:.85rem;line-height:1.6;color:var(--muted)}
+.form-privacy a{color:var(--orange-text);text-decoration:underline}
+.a11y-statement+.a11y-statement{padding-top:0}
+@media(max-width:720px){#privacy{padding-bottom:110px}}
 </style>
 </head>
 <body>
@@ -606,6 +632,7 @@ body.lb-lock{overflow:hidden}
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C7 3 3 6.8 3 11.5c0 1.8.6 3.4 1.6 4.8L3.5 21l4.9-1.3c1 .5 2.4.8 3.6.8 5 0 9-3.8 9-8.5S17 3 12 3z"/></svg>
           שליחת פנייה ישרה לוואטסאפ
         </button>
+        <p class="form-privacy">בלחיצה נפתח וואטסאפ עם הפרטים שמילאתם, ואחזור אליכם רק בנוגע לפנייה. הפרטים לא נשמרים באתר. <a href="#privacy">מדיניות פרטיות</a></p>
         <p class="form-note" id="form-note" role="status" hidden></p>
       </form>
     </div>
@@ -627,7 +654,7 @@ body.lb-lock{overflow:hidden}
       </div>
     </div>
     <p class="credit">© כל הזכויות שמורות לאוהד ללוש. נבנה על ידי דניאל קליינר.</p>
-    <p class="credit"><a href="#accessibility" onclick="var d=document.querySelector('#accessibility details');if(d)d.open=true" style="color:#FFB347">הצהרת נגישות</a></p>
+    <p class="credit"><a href="#privacy" style="color:#FFB347">מדיניות פרטיות</a> · <a href="#accessibility" onclick="var d=document.querySelector('#accessibility details');if(d)d.open=true" style="color:#FFB347">הצהרת נגישות</a></p>
   </div>
 </footer>
 <section class="a11y-statement" id="accessibility" aria-labelledby="a11y-h">
@@ -644,6 +671,7 @@ body.lb-lock{overflow:hidden}
           <li>האתר מכבד את הגדרת "הפחתת תנועה" במכשיר ומכבה הנפשות בהתאם.</li>
           <li>כתוביות בעברית בסרטון הראיון.</li>
           <li>טפסים עם תוויות מקושרות, ותיאור טקסטואלי לתמונות ולרכיבים אינטראקטיביים.</li>
+          <li>בנוסף לכך, בצד השמאלי של המסך יש כפתור "תפריט נגישות" שמאפשר להגדיל טקסט, להפעיל ניגודיות גבוהה או גווני אפור, להדגיש קישורים, לבחור גופן קריא, לעצור אנימציות ולהגדיל את הסמן. ההגדרות נשמרות בדפדפן שלכם. התפריט הוא תוספת לנוחות, והנגישות של האתר מושגת בקוד שלו.</li>
         </ul>
         <h3>מגבלות ידועות</h3>
         <ul>
@@ -654,6 +682,28 @@ body.lb-lock{overflow:hidden}
         <h3>יצירת קשר בנושא נגישות</h3>
         <p>נתקלתם בקושי? נשמח לעזור ולתקן. ניתן לפנות אל <strong>אוהד ללוש</strong> בטלפון <a href="tel:0505488841"><span class="ltr">050-548-8841</span></a> או במייל <a href="mailto:ohadlalush1982@gmail.com"><span class="ltr">ohadlalush1982@gmail.com</span></a>.</p>
         <p class="a11y-date">הצהרה זו עודכנה לאחרונה בנובמבר 2026.</p>
+      </div>
+    </details>
+  </div>
+</section>
+<section class="a11y-statement" id="privacy" aria-labelledby="priv-h">
+  <div class="wrap">
+    <details>
+      <summary id="priv-h">מדיניות פרטיות</summary>
+      <div class="a11y-body">
+        <p>האתר "לתופף עם אוהד בקצב מיוחד" מופעל על ידי אוהד ללוש ("העסק"). מסמך זה מסביר, בקצרה, אילו פרטים נאספים באתר ומה נעשה בהם.</p>
+        <h3>טופס הצעת המחיר</h3>
+        <p>הטופס מבקש שם, סוג אירוע, מיקום, תאריך (אם ידוע) ומספר משתתפים משוער. מסירת הפרטים היא ביוזמתכם ואינה חובה על פי חוק, אך בלעדיהם קשה להכין הצעת מחיר. בלחיצה על "שליחה" נפתח וואטסאפ עם הודעה מוכנה, וההודעה נשלחת רק אם תלחצו על שליחה בוואטסאפ. הפרטים אינם נשמרים בשרת של האתר.</p>
+        <p>העסק משתמש בפרטים רק כדי לחזור אליכם בנוגע לפנייה. אין שימוש בהם לדיוור שיווקי, ואין מכירה או העברה שלהם לגורם אחר.</p>
+        <h3>וואטסאפ, טלפון ומייל</h3>
+        <p>שיחת הוואטסאפ נשמרת בטלפון של העסק. וואטסאפ היא שירות של חברת Meta, וההודעות מוצפנות מקצה לקצה ולכן Meta אינה יכולה לקרוא את תוכנן, אך היא מעבדת נתונים טכניים כמו מספרי טלפון וזמני הודעות. פרטים שתמסרו בשיחת טלפון או במייל יישמרו אצל העסק לצורך מענה לפנייה.</p>
+        <h3>מעקב וקובצי עוגיות</h3>
+        <p>באתר אין כלי סטטיסטיקה או פרסום, והוא אינו אוסף נתוני גלישה. הגדרות תפריט הנגישות נשמרות בדפדפן שלכם בלבד ואינן נשלחות לשום מקום.</p>
+        <h3>שירותי תשתית</h3>
+        <p>האתר מתארח בשירות GitHub Pages וטוען גופנים מ-Google Fonts. שירותים אלה מקבלים נתונים טכניים כמו כתובת IP ופרטי הדפדפן, כפי שקורה בכל אתר.</p>
+        <h3>הזכויות שלכם</h3>
+        <p>אפשר לבקש לעיין בפרטים שמסרתם, לתקן אותם או למחוק אותם. לפנייה: <strong>אוהד ללוש</strong>, טלפון <a href="tel:0505488841"><span class="ltr">050-548-8841</span></a> או מייל <a href="mailto:ohadlalush1982@gmail.com"><span class="ltr">ohadlalush1982@gmail.com</span></a>.</p>
+        <p class="a11y-date">מדיניות זו עודכנה לאחרונה בנובמבר 2026.</p>
       </div>
     </details>
   </div>
@@ -1070,5 +1120,42 @@ body.lb-lock{overflow:hidden}
   restartProg();
 })();
 </script>
+<div id="a11yw">
+<button type="button" class="aw-open" id="awOpen" aria-label="תפריט נגישות" aria-expanded="false" aria-controls="awPanel"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M19 8.5c0-.6-.5-1-1.1-.9-1.8.3-3.9.5-5.9.5s-4.1-.2-5.9-.5c-.6-.1-1.1.3-1.1.9 0 .5.3.9.8 1l3.7.7v3.3l-2 6.6c-.2.5.1 1.1.7 1.2.5.2 1-.1 1.2-.6L11.2 15h1.6l1.8 5.7c.2.5.7.8 1.2.6.6-.1.9-.7.7-1.2l-2-6.6v-3.3l3.7-.7c.5-.1.8-.5.8-1z"/></svg></button>
+<div class="aw-panel" id="awPanel" role="dialog" aria-labelledby="awTitle" hidden>
+ <div class="aw-head"><h2 id="awTitle" tabindex="-1">תפריט נגישות</h2><button type="button" class="aw-x" id="awClose" aria-label="סגירת תפריט הנגישות">✕</button></div>
+ <div class="aw-zoom"><button type="button" id="awZin" aria-label="הגדלת טקסט">＋</button><span id="awZv" aria-live="polite">100%</span><button type="button" id="awZout" aria-label="הקטנת טקסט">－</button></div>
+ <div class="aw-grid">
+  <button type="button" class="aw-t" data-k="hc" aria-pressed="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg><span>ניגודיות גבוהה</span></button>
+  <button type="button" class="aw-t" data-k="gs" aria-pressed="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 12h18M12 3v18"/></svg><span>גווני אפור</span></button>
+  <button type="button" class="aw-t" data-k="ln" aria-pressed="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span>הדגשת קישורים</span></button>
+  <button type="button" class="aw-t" data-k="rf" aria-pressed="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 12 5l7 14M8 14h8"/></svg><span>גופן קריא</span></button>
+  <button type="button" class="aw-t" data-k="sa" aria-pressed="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span>עצירת אנימציות</span></button>
+  <button type="button" class="aw-t" data-k="bc" aria-pressed="false"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 7-6 2 3 7-3 1-3-7-5 4z" fill="currentColor"/></svg><span>סמן גדול</span></button>
+ </div>
+ <div class="aw-foot"><button type="button" id="awReset">↺ איפוס הגדרות</button><a href="#accessibility" id="awStmt">הצהרת נגישות</a></div>
+</div></div>
+<script>(function(){
+var H=document.documentElement,K='ohad-a11y',st={z:100,on:[]};
+try{var v=JSON.parse(localStorage.getItem(K)||'null');if(v&&typeof v.z==='number'&&Array.isArray(v.on))st=v}catch(e){}
+var W=document.getElementById('a11yw'),op=document.getElementById('awOpen'),pn=document.getElementById('awPanel'),zv=document.getElementById('awZv'),tg=[].slice.call(pn.querySelectorAll('.aw-t'));
+function apply(save){H.style.zoom=st.z===100?'':st.z/100;W.style.zoom=st.z===100?'':100/st.z;zv.textContent=st.z+'%';
+ tg.forEach(function(b){var k=b.getAttribute('data-k'),a=st.on.indexOf(k)>-1;H.classList.toggle('a-'+k,a);b.setAttribute('aria-pressed',a)});
+ if(save)try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+function open(){pn.hidden=false;op.setAttribute('aria-expanded','true');document.getElementById('awTitle').focus()}
+function close(f){pn.hidden=true;op.setAttribute('aria-expanded','false');if(f!==false)op.focus()}
+op.addEventListener('click',function(){pn.hidden?open():close()});
+document.getElementById('awClose').addEventListener('click',function(){close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pn.hidden)close()});
+document.addEventListener('click',function(e){if(!pn.hidden&&!W.contains(e.target))close(false)});
+document.getElementById('awZin').addEventListener('click',function(){st.z=Math.min(150,st.z+10);apply(1)});
+document.getElementById('awZout').addEventListener('click',function(){st.z=Math.max(80,st.z-10);apply(1)});
+tg.forEach(function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-k'),i=st.on.indexOf(k);i>-1?st.on.splice(i,1):st.on.push(k);apply(1)})});
+document.getElementById('awReset').addEventListener('click',function(){st={z:100,on:[]};apply(1)});
+function openDoc(id,e){var s=document.getElementById(id);if(!s)return;if(e)e.preventDefault();var d=s.querySelector('details');if(d)d.open=true;s.scrollIntoView({block:'start'});var f=s.querySelector('summary');if(f)f.focus()}
+document.getElementById('awStmt').addEventListener('click',function(e){close(false);openDoc('accessibility',e)});
+[].forEach.call(document.querySelectorAll('a[href="#privacy"],a[href="#accessibility"]'),function(a){if(a.id==='awStmt')return;a.addEventListener('click',function(e){openDoc(a.getAttribute('href').slice(1),e)})});
+apply(0);
+})();</script>
 </body>
 </html>
